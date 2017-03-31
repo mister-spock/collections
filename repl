@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+$project_root = realpath(dirname(__FILE__)).'/';
+
+require_once($project_root.'vendor/autoload.php');
+
+$boris = new \Boris\Boris("imcrepl > ");
+
+$boris->start();
