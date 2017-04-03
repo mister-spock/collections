@@ -17,7 +17,7 @@ class Sequence extends AbstractSequence {
      */
     public
     function map(callable $fn) {
-        return new self(iter\map($fn, $this->value));
+        return new static(iter\map($fn, $this->value));
     }
 
     /**
@@ -26,7 +26,7 @@ class Sequence extends AbstractSequence {
      */
     public
     function map_keys(callable $fn) {
-        return new self(iter\mapKeys($fn, $this->value));
+        return new static(iter\mapKeys($fn, $this->value));
     }
 
     /**
@@ -35,7 +35,7 @@ class Sequence extends AbstractSequence {
      */
     public
     function reindex(callable $fn) {
-        return new self(iter\reindex($fn, $this->value));
+        return new static(iter\reindex($fn, $this->value));
     }
 
     /**
@@ -44,7 +44,7 @@ class Sequence extends AbstractSequence {
      */
     public
     function filter(callable $fn) {
-        return new self(iter\filter($fn, $this->value));
+        return new static(iter\filter($fn, $this->value));
     }
 
     /**
@@ -54,7 +54,7 @@ class Sequence extends AbstractSequence {
      */
     public
     function reductions(callable $fn, $start_value = null) {
-        return new self(iter\reductions($fn, $this->value, $start_value));
+        return new static(iter\reductions($fn, $this->value, $start_value));
     }
 
     /**
@@ -63,7 +63,7 @@ class Sequence extends AbstractSequence {
      */
     public static
     function zip(...$iterables) {
-        return new self(call_user_func_array('iter\zip', $iterables));
+        return new static(call_user_func_array('iter\zip', $iterables));
     }
 
     /**
@@ -73,7 +73,7 @@ class Sequence extends AbstractSequence {
      */
     public static
     function zip_key_value($keys,  $values) {
-        return new self(iter\zipKeyValue($keys, $values));
+        return new static(iter\zipKeyValue($keys, $values));
     }
 
     /**
@@ -82,7 +82,7 @@ class Sequence extends AbstractSequence {
      */
     public static
     function chain(...$iterables) {
-        return new self(call_user_func_array('iter\chain', $iterables));
+        return new static(call_user_func_array('iter\chain', $iterables));
     }
 
     /**
@@ -91,7 +91,7 @@ class Sequence extends AbstractSequence {
      */
     public static
     function product(...$iterables) {
-        return new self(call_user_func_array('iter\product', $iterables));
+        return new static(call_user_func_array('iter\product', $iterables));
     }
 
     /**
@@ -101,7 +101,7 @@ class Sequence extends AbstractSequence {
      */
     public
     function slice(int $start, int $length = INF) {
-        return new self(iter\slice($this->value, $start, $length));
+        return new static(iter\slice($this->value, $start, $length));
     }
 
     /**
@@ -110,7 +110,7 @@ class Sequence extends AbstractSequence {
      */
     public
     function take(int $num) {
-        return new self(iter\take($num, $this->value));
+        return new static(iter\take($num, $this->value));
     }
 
     /**
@@ -119,7 +119,7 @@ class Sequence extends AbstractSequence {
      */
     public
     function drop(int $num) {
-        return new self(iter\drop($num, $this->value));
+        return new static(iter\drop($num, $this->value));
     }
 
     /**
@@ -128,7 +128,7 @@ class Sequence extends AbstractSequence {
      */
     public
     function take_while(callable $fn) {
-        return new self(iter\takeWhile($fn, $this->value));
+        return new static(iter\takeWhile($fn, $this->value));
     }
 
     /**
@@ -137,7 +137,7 @@ class Sequence extends AbstractSequence {
      */
     public
     function drop_while(callable $fn) {
-        return new self(iter\dropWhile($fn, $this->value));
+        return new static(iter\dropWhile($fn, $this->value));
     }
 
     /**
@@ -145,7 +145,7 @@ class Sequence extends AbstractSequence {
      */
     public
     function keys() {
-        return new self(iter\keys($this->value));
+        return new static(iter\keys($this->value));
     }
 
     /**
@@ -153,7 +153,7 @@ class Sequence extends AbstractSequence {
      */
     public
     function values() {
-        return new self(iter\values($this->value));
+        return new static(iter\values($this->value));
     }
 
     /**
@@ -161,7 +161,7 @@ class Sequence extends AbstractSequence {
      */
     public
     function flatten() {
-        return new self(iter\flatten($this->value));
+        return new static(iter\flatten($this->value));
     }
 
     /**
@@ -169,7 +169,7 @@ class Sequence extends AbstractSequence {
      */
     public
     function flip() {
-        return new self(iter\flip($this->value));
+        return new static(iter\flip($this->value));
     }
 
     /**
@@ -178,6 +178,6 @@ class Sequence extends AbstractSequence {
      */
     public
     function chunk(int $size) {
-        return new self(iter\chunk($this->value, $size));
+        return new static(iter\chunk($this->value, $size));
     }
 }

@@ -27,7 +27,7 @@ class RewindableSequence extends AbstractSequence {
      */
     public
     function map(callable $fn) {
-        return new self(iter\rewindable\map($fn, $this->value));
+        return new static(iter\rewindable\map($fn, $this->value));
     }
 
     /**
@@ -36,7 +36,7 @@ class RewindableSequence extends AbstractSequence {
      */
     public
     function map_keys(callable $fn) {
-        return new self(iter\rewindable\mapKeys($fn, $this->value));
+        return new static(iter\rewindable\mapKeys($fn, $this->value));
     }
 
     /**
@@ -45,7 +45,7 @@ class RewindableSequence extends AbstractSequence {
      */
     public
     function reindex(callable $fn) {
-        return new self(iter\rewindable\reindex($fn, $this->value));
+        return new static(iter\rewindable\reindex($fn, $this->value));
     }
 
     /**
@@ -54,7 +54,7 @@ class RewindableSequence extends AbstractSequence {
      */
     public
     function filter(callable $fn) {
-        return new self(iter\rewindable\filter($fn, $this->value));
+        return new static(iter\rewindable\filter($fn, $this->value));
     }
 
     /**
@@ -64,7 +64,7 @@ class RewindableSequence extends AbstractSequence {
      */
     public
     function reductions(callable $fn, $start_value = null) {
-        return new self(iter\rewindable\reductions($fn, $this->value, $start_value));
+        return new static(iter\rewindable\reductions($fn, $this->value, $start_value));
     }
 
     /**
@@ -73,7 +73,7 @@ class RewindableSequence extends AbstractSequence {
      */
     public static
     function zip(...$iterables) {
-        return new self(call_user_func_array('iter\rewindable\zip', $iterables));
+        return new static(call_user_func_array('iter\rewindable\zip', $iterables));
     }
 
     /**
@@ -83,7 +83,7 @@ class RewindableSequence extends AbstractSequence {
      */
     public static
     function zip_key_value($keys,  $values) {
-        return new self(iter\rewindable\zipKeyValue($keys, $values));
+        return new static(iter\rewindable\zipKeyValue($keys, $values));
     }
 
     /**
@@ -92,7 +92,7 @@ class RewindableSequence extends AbstractSequence {
      */
     public static
     function chain(...$iterables) {
-        return new self(call_user_func_array('iter\rewindable\chain', $iterables));
+        return new static(call_user_func_array('iter\rewindable\chain', $iterables));
     }
 
     /**
@@ -101,7 +101,7 @@ class RewindableSequence extends AbstractSequence {
      */
     public static
     function product(...$iterables) {
-        return new self(call_user_func_array('iter\rewindable\product', $iterables));
+        return new static(call_user_func_array('iter\rewindable\product', $iterables));
     }
 
     /**
@@ -111,7 +111,7 @@ class RewindableSequence extends AbstractSequence {
      */
     public
     function slice(int $start, int $length = INF) {
-        return new self(iter\rewindable\slice($this->value, $start, $length));
+        return new static(iter\rewindable\slice($this->value, $start, $length));
     }
 
     /**
@@ -120,7 +120,7 @@ class RewindableSequence extends AbstractSequence {
      */
     public
     function take(int $num) {
-        return new self(iter\rewindable\take($num, $this->value));
+        return new static(iter\rewindable\take($num, $this->value));
     }
 
     /**
@@ -129,7 +129,7 @@ class RewindableSequence extends AbstractSequence {
      */
     public
     function drop(int $num) {
-        return new self(iter\rewindable\drop($num, $this->value));
+        return new static(iter\rewindable\drop($num, $this->value));
     }
 
     /**
@@ -138,7 +138,7 @@ class RewindableSequence extends AbstractSequence {
      */
     public
     function take_while(callable $fn) {
-        return new self(iter\rewindable\takeWhile($fn, $this->value));
+        return new static(iter\rewindable\takeWhile($fn, $this->value));
     }
 
     /**
@@ -147,7 +147,7 @@ class RewindableSequence extends AbstractSequence {
      */
     public
     function drop_while(callable $fn) {
-        return new self(iter\rewindable\dropWhile($fn, $this->value));
+        return new static(iter\rewindable\dropWhile($fn, $this->value));
     }
 
     /**
@@ -155,7 +155,7 @@ class RewindableSequence extends AbstractSequence {
      */
     public
     function keys() {
-        return new self(iter\rewindable\keys($this->value));
+        return new static(iter\rewindable\keys($this->value));
     }
 
     /**
@@ -163,7 +163,7 @@ class RewindableSequence extends AbstractSequence {
      */
     public
     function values() {
-        return new self(iter\rewindable\values($this->value));
+        return new static(iter\rewindable\values($this->value));
     }
 
     /**
@@ -171,7 +171,7 @@ class RewindableSequence extends AbstractSequence {
      */
     public
     function flatten() {
-        return new self(iter\rewindable\flatten($this->value));
+        return new static(iter\rewindable\flatten($this->value));
     }
 
     /**
@@ -179,7 +179,7 @@ class RewindableSequence extends AbstractSequence {
      */
     public
     function flip() {
-        return new self(iter\rewindable\flip($this->value));
+        return new static(iter\rewindable\flip($this->value));
     }
 
     /**
@@ -188,7 +188,7 @@ class RewindableSequence extends AbstractSequence {
      */
     public
     function chunk(int $size) {
-        return new self(iter\rewindable\chunk($this->value, $size));
+        return new static(iter\rewindable\chunk($this->value, $size));
     }
 
     public
