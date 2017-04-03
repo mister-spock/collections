@@ -1,5 +1,6 @@
 <?php
 
+use iMeetCentral\Collection\Exception\SequenceException;
 use iMeetCentral\Collection\Sequence;
 use PHPUnit\Framework\TestCase;
 
@@ -77,4 +78,21 @@ class SequenceTest extends TestCase {
             [1, ['apples', 'bananas', 'oranges'], ['bananas', 'oranges']],
         ];
     }
+
+    public
+    function testRewind() {
+        $this->expectException(SequenceException::class);
+        $seq = new Sequence([1]);
+        $seq->rewind();
+    }
+
+    public
+    function testReuse() {
+        $this->expectException(Exception::class);
+
+        $seq = new Sequence([1]);
+        $seq->to_array();
+        $seq->to_array();
+    }
+
 }
