@@ -12,7 +12,7 @@ class RewindableSequenceTest extends TestCase {
 
         $seq->rewind();
 
-        $this->assertEquals($seq->to_array(), [1, 2, 3, 4]);
+        $this->assertEquals([1, 2, 3, 4], $seq->to_array());
     }
 
     public
@@ -22,7 +22,7 @@ class RewindableSequenceTest extends TestCase {
         $seq->to_array();
         $seq->to_array();
 
-        $this->assertEquals($seq->to_array(), [1]);
+        $this->assertEquals([1], $seq->to_array());
     }
 
 }
