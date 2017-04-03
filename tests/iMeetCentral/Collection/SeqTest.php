@@ -1,17 +1,17 @@
 <?php
 
-use iMeetCentral\Collection\Exception\SequenceException;
-use iMeetCentral\Collection\Sequence;
+use iMeetCentral\Collection\Exception\SeqException;
+use iMeetCentral\Collection\Seq;
 use PHPUnit\Framework\TestCase;
 
-class SequenceTest extends TestCase {
+class SeqTest extends TestCase {
 
     /**
      * @dataProvider mapDataProvider
      */
     public
     function testMap($fn, $input, $expected) {
-        $seq = new Sequence($input);
+        $seq = new Seq($input);
 
         $this->assertEquals($expected, $seq->map($fn)->to_array());
     }
@@ -30,7 +30,7 @@ class SequenceTest extends TestCase {
      */
     public
     function testFilter($fn, $input, $expected) {
-        $seq = new Sequence($input);
+        $seq = new Seq($input);
 
         $this->assertEquals($expected, $seq->filter($fn)->to_array());
     }
@@ -48,7 +48,7 @@ class SequenceTest extends TestCase {
      */
     public
     function testTake($num, $input, $expected) {
-        $seq = new Sequence($input);
+        $seq = new Seq($input);
 
         $this->assertEquals($expected, $seq->take($num)->to_array());
     }
@@ -66,7 +66,7 @@ class SequenceTest extends TestCase {
      */
     public
     function testSlice($start, $num, $input, $expected) {
-        $seq = new Sequence($input);
+        $seq = new Seq($input);
 
         $this->assertEquals($expected, $seq->slice($start, $num)->to_array());
     }
@@ -84,7 +84,7 @@ class SequenceTest extends TestCase {
      */
     public
     function testTakeWhile($fn, $input, $expected) {
-        $seq = new Sequence($input);
+        $seq = new Seq($input);
 
         $this->assertEquals($expected, $seq->take_while($fn)->to_array());
     }
@@ -99,7 +99,7 @@ class SequenceTest extends TestCase {
 
     public
     function testCombos() {
-        $seq = new Sequence([1, 2, 3, 4]);
+        $seq = new Seq([1, 2, 3, 4]);
         $seq = $seq->map(function($num) {
                 return $num + 1;
             })
@@ -116,7 +116,7 @@ class SequenceTest extends TestCase {
      */
     public
     function testDrop($num, $input, $expected) {
-        $seq = new Sequence($input);
+        $seq = new Seq($input);
 
         $this->assertEquals($expected, $seq->drop($num)->to_array());
     }
@@ -131,18 +131,22 @@ class SequenceTest extends TestCase {
 
     public
     function testRewind() {
-        $this->expectException(SequenceException::class);
-        $seq = new Sequence([1]);
+        $seq = new Seq([1, 2, 3, 4]);
+        $seq->to_array();
+
         $seq->rewind();
+
+        $this->assertEquals([1, 2, 3, 4], $seq->to_array());
     }
 
     public
     function testReuse() {
-        $this->expectException(Exception::class);
+        $seq = new Seq([1]);
 
-        $seq = new Sequence([1]);
         $seq->to_array();
         $seq->to_array();
+
+        $this->assertEquals([1], $seq->to_array());
     }
 
 }

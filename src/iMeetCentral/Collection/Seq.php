@@ -5,12 +5,12 @@ use Generator;
 use iter, iter\rewindable;
 
 /**
- * Rewindable implementation of AbstractSequence.
- * This can be reiterated over unlike the standard Sequence.
+ * Rewindable implementation of AbstractSeq.
+ * This can be reiterated over unlike the standard Seq.
  *
  * @package iMeetCentral
  */
-class RewindableSequence extends AbstractSequence {
+class Seq extends AbstractSeq {
 
     /**
      * @param $iterable
@@ -23,7 +23,7 @@ class RewindableSequence extends AbstractSequence {
 
     /**
      * @param callable $fn
-     * @return RewindableSequence
+     * @return Seq
      */
     public
     function map(callable $fn) {
@@ -32,7 +32,7 @@ class RewindableSequence extends AbstractSequence {
 
     /**
      * @param callable $fn
-     * @return RewindableSequence
+     * @return Seq
      */
     public
     function map_keys(callable $fn) {
@@ -41,7 +41,7 @@ class RewindableSequence extends AbstractSequence {
 
     /**
      * @param callable $fn
-     * @return RewindableSequence
+     * @return Seq
      */
     public
     function reindex(callable $fn) {
@@ -50,7 +50,7 @@ class RewindableSequence extends AbstractSequence {
 
     /**
      * @param callable $fn
-     * @return RewindableSequence
+     * @return Seq
      */
     public
     function filter(callable $fn) {
@@ -60,7 +60,7 @@ class RewindableSequence extends AbstractSequence {
     /**
      * @param callable $fn
      * @param null $start_value
-     * @return RewindableSequence
+     * @return Seq
      */
     public
     function reductions(callable $fn, $start_value = null) {
@@ -69,7 +69,7 @@ class RewindableSequence extends AbstractSequence {
 
     /**
      * @param array ...$iterables
-     * @return RewindableSequence
+     * @return Seq
      */
     public static
     function zip(...$iterables) {
@@ -79,7 +79,7 @@ class RewindableSequence extends AbstractSequence {
     /**
      * @param $keys
      * @param $values
-     * @return RewindableSequence
+     * @return Seq
      */
     public static
     function zip_key_value($keys,  $values) {
@@ -88,7 +88,7 @@ class RewindableSequence extends AbstractSequence {
 
     /**
      * @param array ...$iterables
-     * @return RewindableSequence
+     * @return Seq
      */
     public static
     function chain(...$iterables) {
@@ -97,7 +97,7 @@ class RewindableSequence extends AbstractSequence {
 
     /**
      * @param array ...$iterables
-     * @return RewindableSequence
+     * @return Seq
      */
     public static
     function product(...$iterables) {
@@ -107,7 +107,7 @@ class RewindableSequence extends AbstractSequence {
     /**
      * @param int $start
      * @param int $length
-     * @return RewindableSequence
+     * @return Seq
      */
     public
     function slice(int $start, int $length = INF) {
@@ -116,7 +116,7 @@ class RewindableSequence extends AbstractSequence {
 
     /**
      * @param int $num
-     * @return RewindableSequence
+     * @return Seq
      */
     public
     function take(int $num) {
@@ -125,7 +125,7 @@ class RewindableSequence extends AbstractSequence {
 
     /**
      * @param int $num
-     * @return RewindableSequence
+     * @return Seq
      */
     public
     function drop(int $num) {
@@ -134,7 +134,7 @@ class RewindableSequence extends AbstractSequence {
 
     /**
      * @param callable $fn
-     * @return RewindableSequence
+     * @return Seq
      */
     public
     function take_while(callable $fn) {
@@ -143,7 +143,7 @@ class RewindableSequence extends AbstractSequence {
 
     /**
      * @param callable $fn
-     * @return RewindableSequence
+     * @return Seq
      */
     public
     function drop_while(callable $fn) {
@@ -151,7 +151,7 @@ class RewindableSequence extends AbstractSequence {
     }
 
     /**
-     * @return RewindableSequence
+     * @return Seq
      */
     public
     function keys() {
@@ -159,7 +159,7 @@ class RewindableSequence extends AbstractSequence {
     }
 
     /**
-     * @return RewindableSequence
+     * @return Seq
      */
     public
     function values() {
@@ -167,7 +167,7 @@ class RewindableSequence extends AbstractSequence {
     }
 
     /**
-     * @return RewindableSequence
+     * @return Seq
      */
     public
     function flatten() {
@@ -175,7 +175,7 @@ class RewindableSequence extends AbstractSequence {
     }
 
     /**
-     * @return RewindableSequence
+     * @return Seq
      */
     public
     function flip() {
@@ -184,7 +184,7 @@ class RewindableSequence extends AbstractSequence {
 
     /**
      * @param int $size
-     * @return RewindableSequence
+     * @return Seq
      */
     public
     function chunk(int $size) {

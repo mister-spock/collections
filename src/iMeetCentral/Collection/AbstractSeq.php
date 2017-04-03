@@ -2,7 +2,7 @@
 namespace iMeetCentral\Collection;
 
 use Generator;
-use iMeetCentral\Collection\Exception\SequenceException;
+use iMeetCentral\Collection\Exception\SeqException;
 use InvalidArgumentException;
 use iter;
 use Iterator;
@@ -14,7 +14,7 @@ use Traversable;
  *
  * @package iMeetCentral
  */
-abstract class AbstractSequence implements Iterator {
+abstract class AbstractSeq implements Iterator {
 
     /* @var $value Iterator */
     protected $value;
@@ -38,28 +38,28 @@ abstract class AbstractSequence implements Iterator {
 
     /**
      * @param callable $fn
-     * @return AbstractSequence
+     * @return AbstractSeq
      */
     abstract public
     function map(callable $fn);
 
     /**
      * @param callable $fn
-     * @return AbstractSequence
+     * @return AbstractSeq
      */
     abstract public
     function map_keys(callable $fn);
 
     /**
      * @param callable $fn
-     * @return AbstractSequence
+     * @return AbstractSeq
      */
     abstract public
     function reindex(callable $fn);
 
     /**
      * @param callable $fn
-     * @return AbstractSequence
+     * @return AbstractSeq
      */
     abstract public
     function filter(callable $fn);
@@ -67,7 +67,7 @@ abstract class AbstractSequence implements Iterator {
     /**
      * @param callable $fn
      * @param null $start_value
-     * @return AbstractSequence
+     * @return AbstractSeq
      */
     abstract public
     function reductions(callable $fn, $start_value = null);
@@ -75,7 +75,7 @@ abstract class AbstractSequence implements Iterator {
     /**
      * @param int $start
      * @param int $length
-     * @return AbstractSequence
+     * @return AbstractSeq
      */
     abstract public
     function slice(int $start, int $length = INF);
@@ -83,59 +83,59 @@ abstract class AbstractSequence implements Iterator {
 
     /**
      * @param int $num
-     * @return AbstractSequence
+     * @return AbstractSeq
      */
     abstract public
     function take(int $num);
 
     /**
      * @param int $num
-     * @return AbstractSequence
+     * @return AbstractSeq
      */
     abstract public
     function drop(int $num);
 
     /**
      * @param callable $fn
-     * @return AbstractSequence
+     * @return AbstractSeq
      */
     abstract public
     function take_while(callable $fn);
 
     /**
      * @param callable $fn
-     * @return AbstractSequence
+     * @return AbstractSeq
      */
     abstract public
     function drop_while(callable $fn);
 
     /**
-     * @return AbstractSequence
+     * @return AbstractSeq
      */
     abstract public
     function keys();
 
     /**
-     * @return AbstractSequence
+     * @return AbstractSeq
      */
     abstract public
     function values();
 
     /**
-     * @return AbstractSequence
+     * @return AbstractSeq
      */
     abstract public
     function flatten();
 
     /**
-     * @return AbstractSequence
+     * @return AbstractSeq
      */
     abstract public
     function flip();
 
     /**
      * @param int $size
-     * @return AbstractSequence
+     * @return AbstractSeq
      */
     abstract public
     function chunk(int $size);
@@ -237,7 +237,7 @@ abstract class AbstractSequence implements Iterator {
 
     /**
      * @param $fn
-     * @return AbstractSequence
+     * @return AbstractSeq
      */
     public
     function flat_map($fn) {
@@ -267,7 +267,7 @@ abstract class AbstractSequence implements Iterator {
 
     public
     function rewind() {
-        throw new SequenceException('Cannot rewind a sequence. Use iMeetCentral/Collection/RewindableSequence
+        throw new SeqException('Cannot rewind a NonRewindableSeq. Use Seq
             if you require that functionality.');
     }
     /** /Iterator Methods **/
