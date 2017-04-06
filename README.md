@@ -1,0 +1,1 @@
+A sequence implementation using generators. Use Sequence for one use only sequences and RewindableSequence for sequences that can be reiterated over.
