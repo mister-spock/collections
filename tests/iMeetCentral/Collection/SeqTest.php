@@ -6,6 +6,17 @@ use PHPUnit\Framework\TestCase;
 
 class SeqTest extends TestCase {
 
+    public
+    function testFrom() {
+        $testArray   = [1, 2, 3, 4, 5];
+        $resultArray = Seq::from($testArray)
+            ->filter('is_int')
+            ->map(function(int $num) { return $num; })
+            ->to_array();
+
+        $this->assertEquals($testArray, $resultArray);
+    }
+
     /**
      * @dataProvider mapDataProvider
      */

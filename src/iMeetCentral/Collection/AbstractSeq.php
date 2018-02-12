@@ -1,4 +1,5 @@
 <?php
+
 namespace iMeetCentral\Collection;
 
 use Generator;
@@ -18,6 +19,11 @@ abstract class AbstractSeq implements Iterator {
 
     /* @var $value Iterator */
     protected $value;
+
+    public static
+    function from($value) {
+        return new static($value);
+    }
 
     public
     function __construct($value) {
